@@ -1,0 +1,20 @@
+/* Magazine.css */
+.magazine-img {
+    width: 150px; /* Set width */
+    height: 200px; /* Set height */
+    object-fit: cover; /* Crop image to fit the defined dimensions */
+    border-radius: 8px; /* Optional rounded corners */
+    transition: transform 0.3s ease; /* Add a hover effect */
+  }
+  
+  .magazine-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .magazine-img:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
