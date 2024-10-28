@@ -14,7 +14,7 @@ const Magazine = () => {
   const [magazines, setMagazines] = useState([]);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init();
 
     const fetchMagazines = async () => {
       try {
@@ -31,41 +31,37 @@ const Magazine = () => {
   return (
     <section id="magazine" className="magazine section">
       <div className="container section-title" data-aos="fade-up">
-        <h2>magazine</h2>
+        <h2>Magazine</h2>
         <p>Insight Magazine</p>
       </div>
 
-      <div className="container" data-aos="fade-up" data-aos-delay="100">
+      <div className="container">
         <Swiper
           modules={[Pagination, Autoplay]}
           loop={true}
-          speed={600}
-          autoplay={{ delay: 3000 }}
+          speed={1000}
+          autoplay={{ delay: 1000, disableOnInteraction: false }}
+          slidesPerView={3}  // Show 3 slides at a time
+          spaceBetween={20}   // Space between slides
           pagination={{ clickable: true }}
+          className="init-swiper"
+          data-aos="fade-up"
+          data-aos-delay="100"
           breakpoints={{
-            320: { slidesPerView: 1, spaceBetween: 40 },
-            1200: { slidesPerView: 3, spaceBetween: 20 },
+            320: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 20 },
+            1200: { slidesPerView: 3, spaceBetween: 30 },
           }}
         >
           {magazines.map((magazine) => (
             <SwiperSlide key={magazine.id}>
-              <div className="magazine-item">
-                <p>
-                  <span>{magazine.edition}</span> <br />
-                  <small>{new Date(magazine.date).toLocaleDateString()}</small>
-                </p>
-                <a
-                  href={magazine.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={`data:image/jpeg;base64,${magazine.image}`}
-                    className="magazine-img"
-                    alt={magazine.edition}
-                  />
-                </a>
-              </div>
+              <a href={magazine.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={`data:image/jpeg;base64,${magazine.image}`}
+                  className="magazine-img"
+                  alt="Magazine Cover"
+                />
+              </a>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -49,13 +49,16 @@ export const getMagazine = async (req, res) => {
 };
 
 export const deleteMagazine = async (req, res) => {
-  const { id } = req.body;
+  try{
+    const result = await db.query("SELECT * FROM magazine WHERE id = $1", [req.params.id]);
+    if(result.rows.length === 0){
+      return res.status(404).json({error: "Magazine not found"});
+    }
+    await db.query("DELETE FROM magazine WHERE id = $1", [req.params.id]);
 
-  try {
-    await db.query("DELETE FROM magazine WHERE id = $1", [id]);
-    res.status(200).json({ message: "Magazine deleted successfully" });
-  } catch (err) {
+    res.status(200).json({message: "Magazine deleted successfully"});
+  }catch(err){
     console.error(`Database error: ${err}`);
-    res.status(500).json({ error: "Error deleting magazine" });
+    res.status(500).json({error: "Error deleting magazine"});
   }
 };

@@ -64,59 +64,14 @@ function Contact() {
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
         <div className="row gy-4">
-          <div className="col-lg-4">
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <i className="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Location</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
-            </div>
+        <div className="col-lg-4" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <img 
+            src="assets/img/Maglogo.png" 
+            alt="Mag Logo" 
+            style={{ width: "100%", height: "auto", maxWidth: "200px", maxHeight: "200px", objectFit: "contain" }}
+          />
+        </div>
 
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <i className="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Open Hours</h3>
-                <p>
-                  Monday-Saturday:
-                  <br />
-                  11:00 AM - 11:00 PM
-                </p>
-              </div>
-            </div>
-
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <i className="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div>
-
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <i className="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Us</h3>
-                <p>info@example.com</p>
-              </div>
-            </div>
-          </div>
 
           <div className="col-lg-8">
             <form

@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post("/post", pushEvent);
 router.get("/get", getEvent);
-router.delete("/delete/id:", deleteEvent);
+router.delete("/delete/:id", deleteEvent);
 
 export { router as eventRouter };

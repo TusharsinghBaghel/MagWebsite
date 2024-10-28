@@ -5,9 +5,9 @@ import 'aos/dist/aos.css';
 
 const teamMembers = [
   {
-    name: 'Walter White',
-    role: 'Master Chef',
-    imgSrc: 'assets/img/chefs/chefs-3.jpg',
+    name: 'MAG 2024',
+    role: '',
+    imgSrc: 'assets/img/team/2024.jpg',
     socialLinks: {
       twitter: '',
       facebook: '',
@@ -16,9 +16,9 @@ const teamMembers = [
     }
   },
   {
-    name: 'Sarah Jhonson',
-    role: 'Patissier',
-    imgSrc: 'assets/img/chefs/chefs-1.jpg',
+    name: 'MAG 2023',
+    role: '',
+    imgSrc: 'assets/img/team/2023.jpg',
     socialLinks: {
       twitter: '',
       facebook: '',
@@ -27,9 +27,9 @@ const teamMembers = [
     }
   },
   {
-    name: 'William Anderson',
-    role: 'Cook',
-    imgSrc: 'assets/img/chefs/chefs-2.jpg',
+    name: 'MAG 2022',
+    role: '',
+    imgSrc: 'assets/img/team/2022.jpg',
     socialLinks: {
       twitter: '',
       facebook: '',
@@ -48,7 +48,7 @@ function Team() {
     <section id="team" className="team section">
       <div className="container section-title" data-aos="fade-up">
         <h2>Team</h2>
-        <p>Necessitatibus eius consequatur</p>
+        <p>MAG is not a Club, Its a Family</p>
       </div>
 
       <div className="container">
@@ -60,14 +60,9 @@ function Team() {
                 <div className="member-info">
                   <div className="member-info-content">
                     <h4>{member.name}</h4>
-                    <span>{member.role}</span>
+                    
                   </div>
-                  <div className="social">
-                    <a href={member.socialLinks.twitter}><i className="bi bi-twitter"></i></a>
-                    <a href={member.socialLinks.facebook}><i className="bi bi-facebook"></i></a>
-                    <a href={member.socialLinks.instagram}><i className="bi bi-instagram"></i></a>
-                    <a href={member.socialLinks.linkedin}><i className="bi bi-linkedin"></i></a>
-                  </div>
+                  
                 </div>
               </div>
             </div>

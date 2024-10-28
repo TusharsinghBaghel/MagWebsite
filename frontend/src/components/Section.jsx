@@ -3,7 +3,7 @@ import React from "react";
 const Section = () => {
   return (
     <section id="hero" className="hero section dark-background">
-      <img src="assets/img/sar_blur.JPG" alt="" />
+      <img src="assets/img/sar_blur3.JPG" alt="" />
 
       <div className="container">
         <div className="row">

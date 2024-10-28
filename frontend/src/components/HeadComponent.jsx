@@ -36,7 +36,6 @@ const HeadComponent = () => {
         {/* Template Info */}
         <meta
           name="template-info"
-          content="Template Name: Restaurantly, Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/, Author: BootstrapMade.com"
         />
       </Helmet>
     </HelmetProvider>

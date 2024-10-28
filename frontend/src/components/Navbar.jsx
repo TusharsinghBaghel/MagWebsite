@@ -64,7 +64,7 @@ const Navbar = () => {
                   className={activeLink === "eyes_only" ? "active" : ""}
                   onClick={() => handleLinkClick("eyes_only")}
                 >
-                  Eyes_only
+                  Eyes only
                 </a>
               </li>
               <li>
@@ -102,7 +102,7 @@ const Navbar = () => {
             className="btn-add-your-content d-none d-xl-block"
             href="#add-your-content"
           >
-            Book a Table
+            Add yours !
           </a>
         </div>
       </div>

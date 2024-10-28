@@ -24,7 +24,11 @@ const Prose = ({ category }) => {
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
-
+  // Helper function to format the content with line breaks
+  const formatContentWithLineBreaks = (text) => {
+    return text.replace(/\r\n/g, "<br />");
+  };
+  
   return (
     <div className="prose-container">
       <h2 className="prose-title">{category}</h2>
@@ -32,7 +36,9 @@ const Prose = ({ category }) => {
       {proseEntries.map((entry, index) => (
         <div key={index} className="prose-entry">
           <div className="prose-header" onClick={() => toggleExpand(index)}>
-            <h3 className="prose-entry-title">{entry.title}</h3>
+          <h3 className="prose-entry-title" style={{ color: '#cca45e' }}>
+            {entry.title} <span style={{ fontSize: '0.7rem', color: 'lightgrey' }}>by {entry.author}</span>
+          </h3>
             <span className="prose-toggle-icon">
               {expandedIndex === index ? <FaChevronUp /> : <FaChevronDown />}
             </span>
@@ -40,14 +46,18 @@ const Prose = ({ category }) => {
           
           {expandedIndex === index && (
             <div className="prose-details">
-              {entry.image && (
-                <img src={`data:image/png;base64,${entry.image}`} alt={entry.title} className="prose-image" />
-              )}
-              <p className="prose-content">{entry.content}</p>
-              <p className="prose-author">Author: {entry.author}</p>
-              <p className="prose-submitted-by">Submitted by: {entry.submittedBy || "Anonymous"}</p>
-              <p className="prose-date">Date: {new Date(entry.date).toLocaleDateString()}</p>
-            </div>
+            {entry.image && (
+              <img src={`data:image/png;base64,${entry.image}`} alt={entry.title} className="prose-image" />
+            )}
+            <p
+              className="prose-content"
+              dangerouslySetInnerHTML={{ __html: formatContentWithLineBreaks(entry.content) }}
+            ></p>
+            <p className="prose-author">Author: {entry.author}</p>
+            <p className="prose-submitted-by" >Submitted by: {entry.submittedBy || "Anonymous"}</p>
+            <p className="prose-date">Date: {new Date(entry.date).toLocaleDateString()}</p>
+          </div>
+
           )}
         </div>
       ))}
