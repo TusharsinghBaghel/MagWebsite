@@ -113,7 +113,7 @@ function EyesOnly() {
                   {/* Similar structure as above */}
                   <div className="row">
                     <div className="col-lg-8 details order-2 order-lg-1">
-                      <h3>मराठी</h3>
+                      <h3>वात्सल्याचे मोती</h3>
             
                       <p>
                       तुटले बांध स्वप्नांचे,  <br />

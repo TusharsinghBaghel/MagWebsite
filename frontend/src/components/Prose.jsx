@@ -28,16 +28,33 @@ const Prose = ({ category }) => {
   const formatContentWithLineBreaks = (text) => {
     return text.replace(/\r\n/g, "<br />");
   };
-  
+  var title = "nulll"
+  if(category=== "Hindi") title = "~~अफ़साना~~"
+  else if(category === "Marathi") title = "~~वात्सल्याचे मोती~~"
+  else title = "Prose"
   return (
     <div className="prose-container">
-      <h2 className="prose-title">{category}</h2>
-      
+      <h2 
+        className="prose-title" 
+        style={{
+          color: 'goldenrod',
+          fontWeight: 'bold',
+          fontFamily: 'Georgia, serif', 
+          fontSize: '2rem',
+          textAlign: 'center',
+          borderBottom: '2px solid goldenrod',
+          paddingBottom: '0.5rem',
+          letterSpacing: '1px',
+          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+        }}
+      >
+        {title}
+      </h2>
       {proseEntries.map((entry, index) => (
         <div key={index} className="prose-entry">
           <div className="prose-header" onClick={() => toggleExpand(index)}>
           <h3 className="prose-entry-title" style={{ color: '#cca45e' }}>
-            {entry.title} <span style={{ fontSize: '0.7rem', color: 'lightgrey' }}>by {entry.author}</span>
+            {entry.title} <span style={{ fontSize: '0.7rem', color: 'white' }}>by {entry.author}</span>
           </h3>
             <span className="prose-toggle-icon">
               {expandedIndex === index ? <FaChevronUp /> : <FaChevronDown />}
@@ -51,10 +68,10 @@ const Prose = ({ category }) => {
             )}
             <p
               className="prose-content"
+              style={{ color: 'white' }}
               dangerouslySetInnerHTML={{ __html: formatContentWithLineBreaks(entry.content) }}
             ></p>
             <p className="prose-author">Author: {entry.author}</p>
-            <p className="prose-submitted-by" >Submitted by: {entry.submittedBy || "Anonymous"}</p>
             <p className="prose-date">Date: {new Date(entry.date).toLocaleDateString()}</p>
           </div>
 
