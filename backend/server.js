@@ -13,14 +13,39 @@ const app = express();
 const port = 4000;
 env.config();
 
-const db = new pg.Client({
-  user: process.env.USER,
-  host: process.env.HOST,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
-  port: process.env.PORT,
+// const db = new pg.Client({
+//   user: process.env.USER,
+//   host: process.env.HOST,
+//   database: process.env.DATABASE,
+//   password: process.env.PASSWORD,
+//   port: process.env.PORT,
+// });
+// db.connect();
+
+import fs from "fs";
+import url from "url";
+const config = {
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    host: process.env.HOST,
+    port: process.env.PORT,
+    database: process.env.DATABASE,
+    ssl: {
+        rejectUnauthorized: true,
+        ca: fs.readFileSync(process.env.CERTIFICATE).toString(),
+    },
+};
+
+const db = new pg.Client(config);
+
+
+db.connect((err) => {
+  if (err) {
+    console.error("Connection error", err.stack);
+  } else {
+    console.log("Connected to the online PostgreSQL database");
+  }
 });
-db.connect();
 
 app.use(cors());
 app.use(express.json());

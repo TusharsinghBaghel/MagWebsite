@@ -38,6 +38,7 @@ const Events = () => {
         src="assets/img/events-bg.jpg"
         alt=""
         data-aos="fade-in"
+        style={{ opacity: 0.6, height: "100%", width: "100%" }}
       />
 
       <div className="container">
@@ -45,7 +46,7 @@ const Events = () => {
           modules={[Pagination, Autoplay]}
           loop={true}
           speed={1000}
-          autoplay={{ delay: 4000 }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
           slidesPerView="auto"
           pagination={{ clickable: true }}
           className="init-swiper"

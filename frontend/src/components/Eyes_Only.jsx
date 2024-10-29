@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom"; // Import for navigation
 import { Tab, Nav } from "react-bootstrap";
-
+import "../css/blog.css";
 function EyesOnly() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -28,10 +28,10 @@ function EyesOnly() {
                   <Nav.Link eventKey="Eyes_only-tab-1">English</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="Eyes_only-tab-2">Hindi</Nav.Link>
+                  <Nav.Link eventKey="Eyes_only-tab-2">हिंदी</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="Eyes_only-tab-3">Marathi</Nav.Link>
+                  <Nav.Link eventKey="Eyes_only-tab-3">मराठी</Nav.Link>
                 </Nav.Item>
               </Nav>
             </div>
@@ -64,7 +64,7 @@ function EyesOnly() {
                   </div>
                   <div className="row justify-content-center mt-4">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/english")}
                     >
                       Explore More
@@ -76,17 +76,19 @@ function EyesOnly() {
                   {/* Similar structure as above */}
                   <div className="row">
                     <div className="col-lg-8 details order-2 order-lg-1">
-                      <h3>Architecto ut aperiam autem id</h3>
-                      <p className="fst-italic">
-                        Qui laudantium consequatur laborum sit qui ad sapiente
-                        dila parde sonata raqer a videna mareta paulona marka
-                      </p>
+                      <h3>अफ़साना</h3>
+              
                       <p>
-                        Et nobis maiores eius. Voluptatibus ut enim blanditiis
-                        atque harum sint. Laborum eos ipsum ipsa odit magni.
-                        Incidunt hic ut molestiae aut qui. Est repellat minima
-                        eveniet eius et quis magni nihil. Consequatur dolorem
-                        quaerat quos qui similique accusamus nostrum rem vero.
+                      अब कलम परेशाँ कातिब से <br /> 
+                      क्यों लिखे वो केवल आठ पहर, 
+                      क्यों रहे वो केवल एक शहर। <br />
+                      सपनो के शहर में क्यों न रहे ?
+                      मिथ्या की लहर में क्यों न बहे ?<br />
+                      तो कलम पकड़ कातिब की कलाई,
+                      तोड़े अडिग समाज का ताला <br />
+                      जग-संसार को झूठ बताए, 
+                      चलो लिखे कोई अफ़साना<br />
+
                       </p>
                     </div>
                     <div className="col-lg-4 text-center order-1 order-lg-2">
@@ -99,7 +101,7 @@ function EyesOnly() {
                   </div>
                   <div className="row justify-content-center mt-4">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/hindi")}
                     >
                       Explore More
@@ -111,17 +113,17 @@ function EyesOnly() {
                   {/* Similar structure as above */}
                   <div className="row">
                     <div className="col-lg-8 details order-2 order-lg-1">
-                      <h3>Architecto ut aperiam autem id</h3>
-                      <p className="fst-italic">
-                        Qui laudantium consequatur laborum sit qui ad sapiente
-                        dila parde sonata raqer a videna mareta paulona marka
-                      </p>
+                      <h3>मराठी</h3>
+            
                       <p>
-                        Et nobis maiores eius. Voluptatibus ut enim blanditiis
-                        atque harum sint. Laborum eos ipsum ipsa odit magni.
-                        Incidunt hic ut molestiae aut qui. Est repellat minima
-                        eveniet eius et quis magni nihil. Consequatur dolorem
-                        quaerat quos qui similique accusamus nostrum rem vero.
+                      तुटले बांध स्वप्नांचे,  <br />
+                      हरवले साज रंगांचे,  <br />
+                      दाही दिशांना आस नयनांची,  <br />
+                      आणि खुंटलेले वस्त्र विचारांचे,  <br />
+                      मळलेला रंग मुखवट्याचा,  <br />
+                      झालेला भंग प्रेमाचा,  <br />
+                      कथा असो कोणतीही,  <br />
+                      आला पाऊस घेऊन संच कहाण्यांचा ! <br />
                       </p>
                     </div>
                     <div className="col-lg-4 text-center order-1 order-lg-2">
@@ -134,7 +136,7 @@ function EyesOnly() {
                   </div>
                   <div className="row justify-content-center mt-4">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/marathi")}
                     >
                       Explore More

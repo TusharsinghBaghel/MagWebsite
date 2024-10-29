@@ -65,7 +65,7 @@ function AddYourContent() {
         await axios.post("http://localhost:4000/blogs/post", formDataPayload);
         setFormStatus({
           loading: false,
-          success: "Blog submitted successfully!",
+          success: "Your blog will be posted soon. Thankyou!",
         });
         setFormData({
           title: "",
@@ -82,7 +82,7 @@ function AddYourContent() {
         await axios.post("http://localhost:4000/poetry/post", formDataPayload);
         setFormStatus({
           loading: false,
-          success: "Poetry submitted successfully!",
+          success: "Poetry submitted successfully. Thankyou!",
         });
         setEventData({
           title: "",
@@ -114,6 +114,7 @@ function AddYourContent() {
           className={`btn btn-dark-brown ${
             formType === "blogs" ? "active" : ""
           } form-toggle-button me-2`}
+          style={{color: "white"}}
         >
           Blogs
         </button>
@@ -122,6 +123,7 @@ function AddYourContent() {
           className={`btn btn-dark-brown ${
             formType === "events" ? "active" : ""
           } form-toggle-button`}
+          style={{color: "white"}}
         >
           Poetry/Prose
         </button>
@@ -236,10 +238,10 @@ function AddYourContent() {
           <div className="text-center mt-3">
             {formStatus.loading && <div className="loading">Loading...</div>}
             {formStatus.error && (
-              <div className="error-message">{formStatus.error}</div>
+              <div className="error-message" style={{ color: "red" }}>{formStatus.error}</div>
             )}
             {formStatus.success && (
-              <div className="sent-message">{formStatus.success}</div>
+              <div className="sent-message" style={{ color: "green" }}>{formStatus.success}</div>
             )}
             <button type="submit" className="btn btn-dark-brown submit-button">
               Submit

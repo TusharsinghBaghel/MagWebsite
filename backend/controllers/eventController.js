@@ -49,12 +49,16 @@ export const getEvent = async (req, res) => {
 };
 
 export const deleteEvent = async (req, res) => {
-  const { id } = req.body;
-  try {
-    await db.query("DELETE FROM events WHERE id = $1", [id]);
-    res.status(200).json({ message: "Event deleted successfully" });
+  try{
+    const result = await db.query("SELECT * FROM events WHERE id = $1", [req.params.id]);
+    if(result.rows.length === 0){
+      return res.status(404).json({error: "Event not found"});
+    }
+    await db.query("DELETE FROM events WHERE id = $1", [req.params.id]);
+
+    res.status(200).json({message: "Event deleted successfully"});
   } catch (err) {
     console.error(`Database error: ${err}`);
-    res.status(500).json({ error: "Error deleting event" });
+    res.status(500).json({error: "Error in deleting ;) event"});
   }
 };

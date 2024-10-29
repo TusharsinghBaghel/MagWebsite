@@ -41,8 +41,26 @@ export const pushPoem = async (req, res) => {
 export const getPoem = async (req, res) => {
   try {
     const response = await db.query(
-      "SELECT * FROM poetry WHERE approved = false"
+      "SELECT * FROM poetry WHERE approved = true"
     );
+    const blogs = response.rows.map((blog) => {
+      if (blog.image) {
+        const imageBase64 = blog.image.toString("base64");
+        return { ...blog, image: imageBase64 };
+      }
+      return blog;
+    });
+
+    res.status(200).json(blogs);
+  } catch (err) {
+    console.error(`Database error: ${err}`);
+    res.status(500).json({ error: "Error fetching prose/poetry" });
+  }
+};
+
+export const getallPoem = async (req, res) => {
+  try {
+    const response = await db.query("SELECT * FROM poetry");
     const blogs = response.rows.map((blog) => {
       if (blog.image) {
         const imageBase64 = blog.image.toString("base64");
@@ -79,7 +97,7 @@ export const deletePoem = async (req, res) => {
   }
 };
 
-export const approveBlog = async (req, res) => {
+export const approvePoem = async (req, res) => {
   try {
     const result = await db.query(
       "UPDATE poetry SET approved = true WHERE id = $1 RETURNING *",

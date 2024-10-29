@@ -41,8 +41,26 @@ export const pushBlog = async (req, res) => {
 export const getBlogs = async (req, res) => {
   try {
     const response = await db.query(
-      "SELECT * FROM blogs WHERE approved = false"
+      "SELECT * FROM blogs WHERE approved = true"
     );
+    const blogs = response.rows.map((blog) => {
+      if (blog.image) {
+        const imageBase64 = blog.image.toString("base64");
+        return { ...blog, image: imageBase64 };
+      }
+      return blog;
+    });
+
+    res.status(200).json(blogs);
+  } catch (err) {
+    console.error(`Database error: ${err}`);
+    res.status(500).json({ error: "Error fetching blogs" });
+  }
+};
+
+export const getallBlogs = async (req, res) => {
+  try {
+    const response = await db.query("SELECT * FROM blogs");
     const blogs = response.rows.map((blog) => {
       if (blog.image) {
         const imageBase64 = blog.image.toString("base64");

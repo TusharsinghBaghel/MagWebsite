@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import for navigation
 import axios from "axios";
 import "../css/navbar.css";
-
+import "../css/blog.css";
 const BlogSection = () => {
   const [selectedFilter, setSelectedFilter] = useState("*");
   const [blogs, setBlogs] = useState([]);
@@ -104,8 +104,8 @@ const BlogSection = () => {
                   alt={blog.title}
                   style={{ height: "150px", objectFit: "cover" }}
                 />
-                <div className="card-body" style={{ padding: "0.5rem" }}>
-                  <h5 className="card-title" style={{ fontSize: "1rem" }}>
+                <div className="card-body" style={{backgroundColor: "black", padding: "0.5rem" }}>
+                  <h5 className="card-title" style={{color: "#cca45e", fontSize: "1rem" }}>
                     {blog.title}
                   </h5>
                   <p className="card-text" style={{ fontSize: "0.875rem" }}>
@@ -126,7 +126,7 @@ const BlogSection = () => {
         </div>
         <div className="row justify-content-center mt-4">
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-golden"
             onClick={() => navigate("/blogs")}
           >
             Explore More
