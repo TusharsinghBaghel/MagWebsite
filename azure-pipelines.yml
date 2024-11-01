@@ -11,11 +11,12 @@ steps:
       versionSpec: '20.x'
     displayName: 'Install Node.js'
 
-  # Install dependencies for the frontend
+  # Install dependencies for the frontend with --force
   - task: Npm@1
     displayName: "Installing dependencies for frontend"
     inputs:
-      command: 'install'
+      command: 'custom'
+      customCommand: 'install --force'
       workingDir: 'frontend'
 
   # Build the frontend
@@ -26,11 +27,12 @@ steps:
       customCommand: 'run build'
       workingDir: 'frontend'
 
-  # Install dependencies for the backend
+  # Install dependencies for the backend with --force
   - task: Npm@1
     displayName: "Installing dependencies for backend"
     inputs:
-      command: 'install'
+      command: 'custom'
+      customCommand: 'install --force'
       workingDir: 'backend'
 
   # Copy build artifacts
