@@ -1,43 +1,49 @@
-# Node.js with React
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:- task: Npm@1
-  displayName: "Installing node in frontend"
-  inputs:
-    command: 'install'
-    workingDir: 'frontend'- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
+steps:
+  # Install Node.js in the frontend
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.x'
+    displayName: 'Install Node.js'
 
-- task: Npm@1
-  displayName: "Installing node and Building frontend"
-  inputs:
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'frontend'
-    customCommand: 'run build'
-    command: 'install'
-    workingDir: 'backend'
+  # Install dependencies for the frontend
+  - task: Npm@1
+    displayName: "Installing dependencies for frontend"
+    inputs:
+      command: 'install'
+      workingDir: 'frontend'
 
-- task: CopyFiles@2
-  inputs:
-    Contents: |
-      frontend/build/**
-      backend/**
-    TargetFolder: $(Build.ArtifactStagingDirectory)
+  # Build the frontend
+  - task: Npm@1
+    displayName: "Building frontend"
+    inputs:
+      command: 'custom'
+      customCommand: 'run build'
+      workingDir: 'frontend'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'release'
-    publishLocation: 'Container'
+  # Install dependencies for the backend
+  - task: Npm@1
+    displayName: "Installing dependencies for backend"
+    inputs:
+      command: 'install'
+      workingDir: 'backend'
+
+  # Copy build artifacts
+  - task: CopyFiles@2
+    inputs:
+      contents: |
+        frontend/build/**
+        backend/**
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  # Publish build artifacts
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'release'
+      publishLocation: 'Container'
