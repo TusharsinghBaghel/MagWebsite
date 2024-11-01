@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'mag-pool'
 
 steps:
   # Install Node.js in the frontend
