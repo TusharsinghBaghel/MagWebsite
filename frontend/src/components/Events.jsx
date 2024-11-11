@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { BASE_URL } from "../store.js";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -16,7 +17,7 @@ const Events = () => {
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/events/get"); 
+        const response = await axios.get(`${BASE_URL}/events/get`); 
         const formattedEvents = response.data.map(event => ({
           ...event,
           date: event.date.slice(0, 10) 
