@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import "../css/prose.css";
+import { BASE_URL } from '../store.js';
 
 const Prose = ({ category }) => {
   const [proseEntries, setProseEntries] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/poetry/get')
+    axios.get(`${BASE_URL}/poetry/get`)
       .then(response => {
         const proseData = response.data.filter(entry => entry.category === category);
         setProseEntries(proseData);
