@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "../css/form.css";
+import { BASE_URL } from "../store.js";
 
 function AddYourContent() {
   const [formType, setFormType] = useState("blogs");
@@ -62,7 +63,7 @@ function AddYourContent() {
         for (const key in formData) {
           formDataPayload.append(key, formData[key]);
         }
-        await axios.post("http://localhost:4000/blogs/post", formDataPayload);
+        await axios.post(`${BASE_URL}/blogs/post`, formDataPayload);
         setFormStatus({
           loading: false,
           success: "Your blog will be posted soon. Thankyou!",
@@ -79,7 +80,7 @@ function AddYourContent() {
         for (const key in eventData) {
           formDataPayload.append(key, eventData[key]);
         }
-        await axios.post("http://localhost:4000/poetry/post", formDataPayload);
+        await axios.post(`${BASE_URL}/poetry/post`, formDataPayload);
         setFormStatus({
           loading: false,
           success: "Poetry submitted successfully. Thankyou!",
@@ -114,7 +115,7 @@ function AddYourContent() {
           className={`btn btn-dark-brown ${
             formType === "blogs" ? "active" : ""
           } form-toggle-button me-2`}
-          style={{color: "white"}}
+          style={{ color: "white" }}
         >
           Blogs
         </button>
@@ -123,7 +124,7 @@ function AddYourContent() {
           className={`btn btn-dark-brown ${
             formType === "events" ? "active" : ""
           } form-toggle-button`}
-          style={{color: "white"}}
+          style={{ color: "white" }}
         >
           Poetry/Prose
         </button>
@@ -238,10 +239,14 @@ function AddYourContent() {
           <div className="text-center mt-3">
             {formStatus.loading && <div className="loading">Loading...</div>}
             {formStatus.error && (
-              <div className="error-message" style={{ color: "red" }}>{formStatus.error}</div>
+              <div className="error-message" style={{ color: "red" }}>
+                {formStatus.error}
+              </div>
             )}
             {formStatus.success && (
-              <div className="sent-message" style={{ color: "green" }}>{formStatus.success}</div>
+              <div className="sent-message" style={{ color: "green" }}>
+                {formStatus.success}
+              </div>
             )}
             <button type="submit" className="btn btn-dark-brown submit-button">
               Submit
