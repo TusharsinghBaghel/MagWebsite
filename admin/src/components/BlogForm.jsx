@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {BASE_URL} from "../store.js";
 
 const BlogTable = ({ blogs, refreshBlogs }) => {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/blogs/delete/${id}`);
+      await axios.delete(`${BASE_URL}/blogs/delete/${id}`);
       alert("Blog post deleted successfully");
       refreshBlogs();
     } catch (error) {
@@ -15,7 +16,7 @@ const BlogTable = ({ blogs, refreshBlogs }) => {
 
   const handleApprove = async (id) => {
     try {
-      await axios.patch(`http://localhost:4000/blogs/approve/${id}`);
+      await axios.patch(`${BASE_URL}/blogs/approve/${id}`);
       alert("Blog post approved successfully");
       refreshBlogs();
     } catch (error) {
@@ -63,7 +64,7 @@ const BlogApp = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/blogs/getall");
+      const response = await axios.get(`${BASE_URL}/blogs/getall`);
       setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching blog posts:", error);
