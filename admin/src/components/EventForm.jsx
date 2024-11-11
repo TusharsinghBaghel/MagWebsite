@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from "../store.js";
 
 const EventForm = ({ refreshEvents }) => {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ const EventForm = ({ refreshEvents }) => {
     }
 
     try {
-      await axios.post("http://localhost:4000/events/post", formDataObj);
+      await axios.post(`${BASE_URL}/events/post`, formDataObj);
       alert("Event post submitted successfully");
       setFormData({ title: "", content: "", image: null, date: "" });
       refreshEvents();
@@ -89,7 +90,7 @@ const EventForm = ({ refreshEvents }) => {
 const EventTable = ({ events, refreshEvents }) => {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/events/delete/${id}`);
+      await axios.delete(`${BASE_URL}/events/delete/${id}`);
       alert("Event deleted successfully");
       refreshEvents();
     } catch (error) {
@@ -131,7 +132,7 @@ const EventApp = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/events/get");
+      const response = await axios.get(`${BASE_URL}/events/get`);
       setEvents(response.data);
     } catch (error) {
       console.error("Error fetching events:", error);
