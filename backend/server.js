@@ -4,7 +4,7 @@ import pg from "pg";
 import env from "dotenv";
 import multer from "multer";
 import { blogRouter } from "./routers/blogRouter.js";
-import { galleryRouter } from "./routers/GalleryRouter.js";
+import { galleryRouter } from "./routers/galleryRouter.js";
 import { messageRouter } from "./routers/messageRouter.js";
 import { poetryRouter } from "./routers/poetryRouter.js";
 import { eventRouter } from "./routers/eventRouter.js";
@@ -13,7 +13,6 @@ import fs from "fs";
 import url from "url";
 
 const app = express();
-const port = 4000;
 env.config();
 
 const config = {
@@ -79,6 +78,6 @@ app.use("/magazine", magazineRouter);
 
 export { db };
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });
