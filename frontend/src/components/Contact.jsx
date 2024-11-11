@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios"; 
+import { BASE_URL } from "../store.js";
 
 function Contact() {
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ function Contact() {
     setErrorMessage("");
     setSentMessage("");
 
-    const apiUrl = "http://localhost:4000/messages/post";
+    const apiUrl = `${BASE_URL}/messages/post`;
 
     try {
       const response = await axios.post(apiUrl, formData);
