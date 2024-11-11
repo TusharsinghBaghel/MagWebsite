@@ -4,7 +4,7 @@ import pg from "pg";
 import env from "dotenv";
 import multer from "multer"; 
 import { blogRouter } from "./routers/blogRouter.js";
-import { galleryRouter } from "./routers/GalleryRouter.js";
+import { galleryRouter } from "./routers/galleryRouter.js";
 import { messageRouter } from "./routers/messageRouter.js";
 import { poetryRouter } from "./routers/poetryRouter.js";
 import { eventRouter } from "./routers/eventRouter.js";
