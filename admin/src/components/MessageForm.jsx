@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../store.js";
 
 const MessageForm = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const MessageForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4000/messages/post", formData);
+      const response = await axios.post(`${BASE_URL}/messages/post`, formData);
       alert("Message submitted successfully");
     } catch (error) {
       console.error("Error submitting message:", error.response?.data || error.message);
