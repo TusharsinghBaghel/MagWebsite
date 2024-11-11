@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../css/navbar.css";
 import "../css/blog.css"; 
+import {BASE_URL} from "../store.js";
 
 const BlogPage = () => {
   const [selectedFilter, setSelectedFilter] = useState('*');
@@ -10,7 +11,7 @@ const BlogPage = () => {
   const [selectedBlog, setSelectedBlog] = useState(null); 
 
   useEffect(() => {
-    axios.get('http://localhost:4000/blogs/get')
+    axios.get(`${BASE_URL}/blogs/get`)
       .then(response => {
         setBlogs(response.data);
         setLoading(false);
