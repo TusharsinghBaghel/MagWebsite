@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../store.js";
 
 const MagazineForm = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const MagazineForm = () => {
     }
 
     try {
-      await axios.post("http://localhost:4000/magazine/post", formDataObj);
+      await axios.post(`${BASE_URL}/magazine/post`, formDataObj);
       alert("Magazine post submitted successfully");
       fetchMagazines(); 
     } catch (error) {
@@ -45,7 +46,7 @@ const MagazineForm = () => {
 
   const fetchMagazines = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/magazine/get");
+      const response = await axios.get(`${BASE_URL}/magazine/get`);
       setMagazines(response.data);
     } catch (error) {
       console.error("Error fetching magazines:", error);
@@ -54,7 +55,7 @@ const MagazineForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/magazine/delete/${id}`);
+      await axios.delete(`${BASE_URL}/magazine/delete/${id}`);
       alert("Magazine deleted successfully");
       fetchMagazines();
     } catch (error) {
