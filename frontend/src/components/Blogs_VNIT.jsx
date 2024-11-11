@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/navbar.css";
 import "../css/blog.css";
+import { BASE_URL } from "../store.js";
+
 const BlogSection = () => {
   const [selectedFilter, setSelectedFilter] = useState("*");
   const [blogs, setBlogs] = useState([]);
@@ -11,7 +13,7 @@ const BlogSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/blogs/get")
+      .get(`${BASE_URL}/blogs/get`)
       .then((response) => {
         setBlogs(response.data);
         setLoading(false);
