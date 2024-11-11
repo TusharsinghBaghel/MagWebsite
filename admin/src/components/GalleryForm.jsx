@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../store.js";
 
 const GalleryForm = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -19,7 +20,7 @@ const GalleryForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/gallery/post",
+        `${BASE_URL}/gallery/post`,
         formDataObj,
         {
           headers: {
