@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from "../store.js";
 
 const PoetryTable = ({ poems, refreshPoems }) => {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/poetry/delete/${id}`);
+      await axios.delete(`${BASE_URL}/poetry/delete/${id}`);
       alert("Poetry post deleted successfully");
       refreshPoems();
     } catch (error) {
@@ -15,7 +16,7 @@ const PoetryTable = ({ poems, refreshPoems }) => {
 
   const handleApprove = async (id) => {
     try {
-      await axios.patch(`http://localhost:4000/poetry/approve/${id}`);
+      await axios.patch(`${BASE_URL}/poetry/approve/${id}`);
       alert("Poetry post approved successfully");
       refreshPoems();
     } catch (error) {
@@ -76,7 +77,7 @@ const PoetryApp = () => {
 
   const fetchPoems = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/poetry/getall");
+      const response = await axios.get(`${BASE_URL}/poetry/getall`);
       setPoems(response.data);
     } catch (error) {
       console.error("Error fetching poetry entries:", error);
