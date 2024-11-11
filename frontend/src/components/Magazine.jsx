@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import "../css/magazine.css";
+import { BASE_URL } from "../store.js";
 
 const Magazine = () => {
   const [magazines, setMagazines] = useState([]);
@@ -17,7 +18,7 @@ const Magazine = () => {
 
     const fetchMagazines = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/magazine/get");
+        const response = await axios.get(`${BASE_URL}/magazine/get`);
         setMagazines(response.data);
       } catch (error) {
         console.error("Error fetching magazine data:", error);
