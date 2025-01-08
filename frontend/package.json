@@ -20,12 +20,12 @@
     "swiper": "^10.3.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "PORT=$PORT react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "PORT=$PORT serve -s build",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
