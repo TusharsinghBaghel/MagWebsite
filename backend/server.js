@@ -2,32 +2,37 @@ import express from "express";
 import cors from "cors";
 import pg from "pg";
 import env from "dotenv";
-import multer from "multer";
+import multer from "multer"; 
 import { blogRouter } from "./routers/blogRouter.js";
-import { galleryRouter } from "./routers/galleryRouter.js";
+import { galleryRouter } from "./routers/GalleryRouter.js";
 import { messageRouter } from "./routers/messageRouter.js";
 import { poetryRouter } from "./routers/poetryRouter.js";
 import { eventRouter } from "./routers/eventRouter.js";
 import { magazineRouter } from "./routers/magazineRouter.js";
+const app = express();
+env.config();
+const port = process.env.SERVER_PORT || 4000;
+
 import fs from "fs";
 import url from "url";
 
-const app = express();
-env.config();
-
 const config = {
-  user: process.env.PG_USER,
-  password: process.env.PG_PASSWORD,
-  host: process.env.PG_HOST,
-  port: process.env.PG_PORT,
-  database: process.env.PG_DATABASE,
-  ssl: {
-    rejectUnauthorized: true,
-    ca: fs.readFileSync(process.env.CERTIFICATE).toString(),
-  },
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  host: process.env.HOST,
+  port: parseInt(process.env.PORT, 10),
+  database: process.env.DATABASE,
+  ssl: process.env.CERTIFICATE 
+    ? {
+        rejectUnauthorized: true,
+        ca: fs.readFileSync(process.env.CERTIFICATE).toString(),
+      }
+    : true, 
 };
 
+
 const db = new pg.Client(config);
+
 
 db.connect((err) => {
   if (err) {
@@ -78,6 +83,6 @@ app.use("/magazine", magazineRouter);
 
 export { db };
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
