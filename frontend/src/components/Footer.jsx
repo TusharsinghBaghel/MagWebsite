@@ -19,12 +19,12 @@ function Footer() {
   };
 
   return (
-    <footer id="footer" className="footer">
+    <footer id="footer" className="footer" style={{ backgroundColor: '#000', color: '#fff' }}>
       <div className="container footer-top">
         <div className="row gy-4">
           <div className="col-lg-4 col-md-6 footer-about">
             <a href="/" className="logo d-flex align-items-center">
-              <span className="sitename">MAG.com</span>
+              <span className="sitename" style={{ color: '#FFD700' }}>MAG.com</span>
             </a>
             <div className="footer-contact pt-3">
               <p>MAG का अड्डा </p>
@@ -42,19 +42,27 @@ function Footer() {
       </div>
 
       {/* Dev Credits Section */}
-      <div className="dev-credits text-end" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '14px', color: '#888' }}>
-        <p>
-          <span>Developed by:</span>
-          <a href="https://github.com/developer1" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 1</a>,
-          <a href="https://github.com/developer2" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 2</a>,
-          <a href="https://github.com/developer3" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 3</a>,
-          <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 4</a>
-        </p>
+      <div className="dev-credits" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '14px', color: '#FFD700' }}>
+        <h5 style={{ color: '#FFD700', fontSize: '18px', fontWeight: 'bold' }}>Developed By:</h5>
+        <ul style={{ listStyleType: 'none', padding: '0' }}>
+          <li style={{ marginBottom: '10px' }}>
+            <a href="https://github.com/developer1" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 1</a>
+          </li>
+          <li style={{ marginBottom: '10px' }}>
+            <a href="https://github.com/developer2" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 2</a>
+          </li>
+          <li style={{ marginBottom: '10px' }}>
+            <a href="https://github.com/developer3" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 3</a>
+          </li>
+          <li style={{ marginBottom: '10px' }}>
+            <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 4</a>
+          </li>
+        </ul>
       </div>
 
       <div className="container text-center mt-4">
         <p>
-          © <span>Copyright</span> <strong className="px-1 sitename">MAG.com</strong> <span>All Rights Reserved</span>
+          © <span>Copyright</span> <strong className="px-1 sitename" style={{ color: '#FFD700' }}>MAG.com</strong> <span>All Rights Reserved</span>
         </p>
       </div>
     </footer>
