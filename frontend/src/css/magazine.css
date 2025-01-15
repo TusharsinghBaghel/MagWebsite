@@ -77,3 +77,10 @@
 .swiper-pagination-bullet-active {
   background: #f5f5f5; /* Active dot color */
 }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust height if needed */
+}

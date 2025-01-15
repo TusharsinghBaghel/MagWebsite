@@ -59,6 +59,7 @@ function EyesOnly() {
                     <button
                       className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/english")}
+                      style={{ width: "400px" , marginLeft: "-560px"}}
                     >
                       Explore More
                     </button>{" "}
@@ -96,6 +97,7 @@ function EyesOnly() {
                     <button
                       className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/hindi")}
+                      style={{ width: "400px" , marginLeft: "-560px"}}
                     >
                       Explore More
                     </button>{" "}
@@ -131,6 +133,7 @@ function EyesOnly() {
                     <button
                       className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/marathi")}
+                      style={{ width: "400px" , marginLeft: "-560px"}}
                     >
                       Explore More
                     </button>{" "}

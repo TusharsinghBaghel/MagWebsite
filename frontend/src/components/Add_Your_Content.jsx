@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "../css/form.css";
+import "../css/message.css";
 import { BASE_URL } from "../store.js";
 
 function AddYourContent() {
@@ -66,7 +67,7 @@ function AddYourContent() {
         await axios.post(`${BASE_URL}/blogs/post`, formDataPayload);
         setFormStatus({
           loading: false,
-          success: "Your blog will be posted soon. Thankyou!",
+          success: "Your blog will be posted soon. Thank you!",
         });
         setFormData({
           title: "",
@@ -83,7 +84,7 @@ function AddYourContent() {
         await axios.post(`${BASE_URL}/poetry/post`, formDataPayload);
         setFormStatus({
           loading: false,
-          success: "Poetry submitted successfully. Thankyou!",
+          success: "Your poetry will be posted soon. Thank you!",
         });
         setEventData({
           title: "",
@@ -94,11 +95,21 @@ function AddYourContent() {
           category: "English",
         });
       }
+
+      // Set a timeout to clear success message
+      setTimeout(() => {
+        setFormStatus((prevStatus) => ({ ...prevStatus, success: "" }));
+      }, 5000);
     } catch (error) {
       setFormStatus({
         loading: false,
         error: "Error submitting the form. Please try again.",
       });
+
+      // Set a timeout to clear error message
+      setTimeout(() => {
+        setFormStatus((prevStatus) => ({ ...prevStatus, error: "" }));
+      }, 5000);
     }
   };
 
@@ -196,12 +207,18 @@ function AddYourContent() {
                   >
                     {formType === "blogs" ? (
                       <>
+                        <option value="Default">
+                          Choose a Blog Category
+                        </option>
                         <option value="College Life">College Life</option>
                         <option value="Intern Diaries">Intern Diaries</option>
                         <option value="Research">Research</option>
                       </>
                     ) : (
                       <>
+                        <option value="Default" >
+                          Choose a Language Category
+                        </option>
                         <option value="English">English</option>
                         <option value="Hindi">Hindi</option>
                         <option value="Marathi">Marathi</option>
@@ -238,14 +255,14 @@ function AddYourContent() {
 
           <div className="text-center mt-3">
             {formStatus.loading && <div className="loading">Loading...</div>}
-            {formStatus.error && (
-              <div className="error-message" style={{ color: "red" }}>
-                {formStatus.error}
+            {formStatus.success && (
+              <div className="ack-message success-message">
+                {formStatus.success}
               </div>
             )}
-            {formStatus.success && (
-              <div className="sent-message" style={{ color: "green" }}>
-                {formStatus.success}
+            {formStatus.error && (
+              <div className="ack-message error-message">
+                {formStatus.error}
               </div>
             )}
             <button type="submit" className="btn btn-dark-brown submit-button">

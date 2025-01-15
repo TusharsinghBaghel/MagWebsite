@@ -11,20 +11,23 @@ import { BASE_URL } from "../store.js";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     AOS.init();
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/events/get`); 
-        const formattedEvents = response.data.map(event => ({
+        const response = await axios.get(`${BASE_URL}/events/get`);
+        const formattedEvents = response.data.map((event) => ({
           ...event,
-          date: event.date.slice(0, 10) 
+          date: event.date.slice(0, 10), // Format the date
         }));
         setEvents(formattedEvents);
+        setLoading(false); // Set loading to false once data is fetched
       } catch (error) {
         console.error("Error fetching events:", error);
+        setLoading(false);
       }
     };
 
@@ -41,41 +44,53 @@ const Events = () => {
         style={{ opacity: 0.6, height: "100%", width: "100%" }}
       />
 
+      <div className="container section-title" data-aos="fade-up">
+        <h2>Events</h2>
+        <p>Events at VNIT</p>
+      </div>
+
       <div className="container">
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          loop={true}
-          speed={1000}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          slidesPerView="auto"
-          pagination={{ clickable: true }}
-          className="init-swiper"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          {events.map((event) => (
-            <SwiperSlide key={event.id}>
-              <div className="row gy-4 event-item">
-                <div className="col-lg-6">
-                  <img
-                    src={`data:image/jpeg;base64,${event.image}`}
-                    className="img-fluid"
-                    alt={event.title}
-                  />
-                </div>
-                <div className="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>{event.title}</h3>
-                  <div className="price">
-                    <p>
-                      <span>{event.date || "N/A"}</span>
-                    </p>
+        {loading ? (
+          <div className="loader-container">
+            {/* Add the loader */}
+            <l-grid size="90" speed="1" color="white"></l-grid>
+          </div>
+        ) : (
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            loop={true}
+            speed={1000}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            slidesPerView="auto"
+            pagination={{ clickable: true }}
+            className="init-swiper"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            {events.map((event) => (
+              <SwiperSlide key={event.id}>
+                <div className="row gy-4 event-item">
+                  <div className="col-lg-6">
+                    <img
+                      src={`data:image/jpeg;base64,${event.image}`}
+                      className="img-fluid"
+                      alt={event.title}
+                    />
                   </div>
-                  <p className="fst-italic">{event.content}</p>
+                  <div className="col-lg-6 pt-4 pt-lg-0 content">
+                    <h3>{event.title}</h3>
+                    <div className="price">
+                      <p>
+                        <span>{event.date || "N/A"}</span>
+                      </p>
+                    </div>
+                    <p className="fst-italic">{event.content}</p>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
     </section>
   );

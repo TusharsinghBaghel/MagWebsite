@@ -7,17 +7,22 @@ import { BASE_URL } from '../store.js';
 const Prose = ({ category }) => {
   const [proseEntries, setProseEntries] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  // Reset loading state to true on each component mount
   useEffect(() => {
+    setLoading(true); // Ensure loading is true whenever the component is mounted
     axios.get(`${BASE_URL}/poetry/get`)
       .then(response => {
         const proseData = response.data.filter(entry => entry.category === category);
         setProseEntries(proseData);
+        setLoading(false); // Set loading to false after data is fetched
       })
       .catch(error => {
         console.error('Error fetching prose entries:', error);
+        setLoading(false); // Set loading to false in case of error as well
       });
-  }, [category]);
+  }, [category]); // Depend on the category prop to refetch data on category change
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -26,10 +31,12 @@ const Prose = ({ category }) => {
   const formatContentWithLineBreaks = (text) => {
     return text.replace(/\r\n/g, "<br />");
   };
-  var title = "nulll"
-  if(category=== "Hindi") title = "~~अफ़साना~~"
-  else if(category === "Marathi") title = "~~वात्सल्याचे मोती~~"
-  else title = "Prose"
+
+  let title = "nulll";
+  if (category === "Hindi") title = "~~अफ़साना~~";
+  else if (category === "Marathi") title = "~~वात्सल्याचे मोती~~";
+  else title = "Prose";
+
   return (
     <div className="prose-container">
       <h2 
@@ -48,34 +55,53 @@ const Prose = ({ category }) => {
       >
         {title}
       </h2>
-      {proseEntries.map((entry, index) => (
+
+      {/* Loader Section */}
+      {loading && (
+        <div className="loader-container" style={{ textAlign: 'center', marginTop: '50px' }}>
+          <l-grid
+            size="90"
+            speed="1"
+            color="white"
+          ></l-grid>
+        </div>
+      )}
+
+      {/* Prose entries */}
+      {!loading && proseEntries.length > 0 && proseEntries.map((entry, index) => (
         <div key={index} className="prose-entry">
           <div className="prose-header" onClick={() => toggleExpand(index)}>
-          <h3 className="prose-entry-title" style={{ color: '#cca45e' }}>
-            {entry.title} <span style={{ fontSize: '0.7rem', color: 'white' }}>by {entry.author}</span>
-          </h3>
+            <h3 className="prose-entry-title" style={{ color: '#cca45e' }}>
+              {entry.title} <span style={{ fontSize: '0.7rem', color: 'white' }}>by {entry.author}</span>
+            </h3>
             <span className="prose-toggle-icon">
               {expandedIndex === index ? <FaChevronUp /> : <FaChevronDown />}
             </span>
           </div>
-          
+
           {expandedIndex === index && (
             <div className="prose-details">
-            {entry.image && (
-              <img src={`data:image/png;base64,${entry.image}`} alt={entry.title} className="prose-image" />
-            )}
-            <p
-              className="prose-content"
-              style={{ color: 'white' }}
-              dangerouslySetInnerHTML={{ __html: formatContentWithLineBreaks(entry.content) }}
-            ></p>
-            <p className="prose-author">Author: {entry.author}</p>
-            <p className="prose-date">Date: {new Date(entry.date).toLocaleDateString()}</p>
-          </div>
-
+              {entry.image && (
+                <img src={`data:image/png;base64,${entry.image}`} alt={entry.title} className="prose-image" />
+              )}
+              <p
+                className="prose-content"
+                style={{ color: 'white' }}
+                dangerouslySetInnerHTML={{ __html: formatContentWithLineBreaks(entry.content) }}
+              ></p>
+              <p className="prose-author">Author: {entry.author}</p>
+              <p className="prose-date">Date: {new Date(entry.date).toLocaleDateString()}</p>
+            </div>
           )}
         </div>
       ))}
+      
+      {/* If there are no prose entries */}
+      {!loading && proseEntries.length === 0 && (
+        <div className="no-content" style={{ textAlign: 'center', color: 'white' }}>
+          No prose entries found.
+        </div>
+      )}
     </div>
   );
 };

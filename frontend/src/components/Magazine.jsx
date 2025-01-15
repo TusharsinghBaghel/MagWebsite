@@ -12,6 +12,7 @@ import { BASE_URL } from "../store.js";
 
 const Magazine = () => {
   const [magazines, setMagazines] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     AOS.init();
@@ -20,8 +21,10 @@ const Magazine = () => {
       try {
         const response = await axios.get(`${BASE_URL}/magazine/get`);
         setMagazines(response.data);
+        setLoading(false);  // Set loading to false once data is fetched
       } catch (error) {
         console.error("Error fetching magazine data:", error);
+        setLoading(false);
       }
     };
 
@@ -35,37 +38,48 @@ const Magazine = () => {
         <p>Insight Magazine</p>
       </div>
 
-      <div className="container">
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          loop={true}
-          speed={1000}
-          autoplay={{ delay: 1000, disableOnInteraction: false }}
-          slidesPerView={3}  
-          spaceBetween={20}   
-          pagination={{ clickable: true }}
-          className="init-swiper"
-          data-aos="fade-up"
-          data-aos-delay="100"
-          breakpoints={{
-            320: { slidesPerView: 1, spaceBetween: 20 },
-            768: { slidesPerView: 2, spaceBetween: 20 },
-            1200: { slidesPerView: 3, spaceBetween: 30 },
-          }}
-        >
-          {magazines.map((magazine) => (
-            <SwiperSlide key={magazine.id}>
-              <a href={magazine.link} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={`data:image/jpeg;base64,${magazine.image}`}
-                  className="magazine-img"
-                  alt="Magazine Cover"
-                />
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {loading ? (
+        <div className="loader-container">
+          {/* Add the loader */}
+          <l-grid
+            size="90"
+            speed="1"
+            color="white"
+          ></l-grid>
+        </div>
+      ) : (
+        <div className="container">
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            loop={true}
+            speed={1000}
+            autoplay={{ delay: 1000, disableOnInteraction: false }}
+            slidesPerView={3}
+            spaceBetween={20}
+            pagination={{ clickable: true }}
+            className="init-swiper"
+            data-aos="fade-up"
+            data-aos-delay="100"
+            breakpoints={{
+              320: { slidesPerView: 1, spaceBetween: 20 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1200: { slidesPerView: 3, spaceBetween: 30 },
+            }}
+          >
+            {magazines.map((magazine) => (
+              <SwiperSlide key={magazine.id}>
+                <a href={magazine.link} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={`data:image/jpeg;base64,${magazine.image}`}
+                    className="magazine-img"
+                    alt="Magazine Cover"
+                  />
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
     </section>
   );
 };

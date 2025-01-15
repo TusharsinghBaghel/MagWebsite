@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {BASE_URL} from "../store.js";
+import { BASE_URL } from "../store.js";
 
 const BlogTable = ({ blogs, refreshBlogs }) => {
   const handleDelete = async (id) => {
@@ -35,6 +35,7 @@ const BlogTable = ({ blogs, refreshBlogs }) => {
           <th>Roll No</th>
           <th>Image</th>
           <th>Status</th>
+          <th>Date</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -45,8 +46,19 @@ const BlogTable = ({ blogs, refreshBlogs }) => {
             <td>{blog.content}</td>
             <td>{blog.author}</td>
             <td>{blog.rollno}</td>
-            <td>{blog.image ? <img src={blog.image} alt="Blog" width="50" /> : "No Image"}</td>
+            <td>
+              {blog.image ? (
+                <img
+                  src={`${BASE_URL}/${blog.image}`}
+                  alt="Blog"
+                  width="50"
+                />
+              ) : (
+                "No Image"
+              )}
+            </td>
             <td>{blog.approved ? "Approved" : "Pending"}</td>
+            <td>{new Date(blog.date).toLocaleString()}</td>
             <td>
               <button onClick={() => handleDelete(blog.id)}>Delete</button>
               {!blog.approved && (
@@ -59,13 +71,21 @@ const BlogTable = ({ blogs, refreshBlogs }) => {
     </table>
   );
 };
+
 const BlogApp = () => {
   const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/blogs/getall`);
-      setBlogs(response.data);
+
+      const sortedBlogs = response.data.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB - dateA;
+      });
+
+      setBlogs(sortedBlogs);
     } catch (error) {
       console.error("Error fetching blog posts:", error);
     }
