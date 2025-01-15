@@ -18,7 +18,7 @@ env.config();
 //   host: process.env.HOST,
 //   database: process.env.DATABASE,
 //   password: process.env.PASSWORD,
-//   port: process.env.PORT,
+//   port: 19299,
 // });
 // db.connect();
 
