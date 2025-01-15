@@ -12,3 +12,32 @@ code {
     monospace;
 }
 
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: #000; /* Match the dark background */
+  border-radius: 6px;
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ffcc00, #e6b800); /* Golden gradient for the thumb */
+  border-radius: 6px;
+  border: 2px solid #000; /* Adds a dark outline for contrast */
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ffd633, #e6c300); /* Slightly brighter on hover */
+}
+
+/* Optional: Customize corner if both scrollbars are visible */
+::-webkit-scrollbar-corner {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: #ffcc00 #000; /* Thumb and track colors */
+}
+
