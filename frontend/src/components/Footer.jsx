@@ -29,9 +29,7 @@ function Footer() {
             <div className="footer-contact pt-3">
               <p>MAG का अड्डा </p>
               <p>VNIT, Nagpur</p>
-              
             </div>
-            
           </div>
 
           <div className="col-lg-2 col-md-3 footer-links">
@@ -40,10 +38,20 @@ function Footer() {
               <a href="https://www.linkedin.com/company/mag-com/posts/?feedView=all"><i className="bi bi-linkedin"></i></a>
             </div>
           </div>
-
-          
         </div>
       </div>
+
+      {/* Dev Credits Section */}
+      <div className="dev-credits text-end" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '14px', color: '#888' }}>
+        <p>
+          <span>Developed by:</span>
+          <a href="https://github.com/developer1" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 1</a>,
+          <a href="https://github.com/developer2" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 2</a>,
+          <a href="https://github.com/developer3" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 3</a>,
+          <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#888', marginLeft: '5px' }}>Developer 4</a>
+        </p>
+      </div>
+
       <div className="container text-center mt-4">
         <p>
           © <span>Copyright</span> <strong className="px-1 sitename">MAG.com</strong> <span>All Rights Reserved</span>
