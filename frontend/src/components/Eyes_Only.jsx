@@ -97,7 +97,7 @@ function EyesOnly() {
                     <button
                       className="btn btn-primary btn-golden"
                       onClick={() => navigate("/prose/hindi")}
-                      style={{ width: "400px" , marginLeft: "-560px"}}
+                      style={{ width: "400px" }}
                     >
                       Explore More
                     </button>{" "}
