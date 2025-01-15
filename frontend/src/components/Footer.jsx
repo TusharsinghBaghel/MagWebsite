@@ -38,27 +38,46 @@ function Footer() {
               <a href="https://www.linkedin.com/company/mag-com/posts/?feedView=all"><i className="bi bi-linkedin"></i></a>
             </div>
           </div>
+          {/* Dev Credits Section */}
+          <div className="dev-credits text-center py-3 col-lg-6 col-md-6" style={{ fontSize: '14px', color: '#FFD700', marginTop: '20px' }}>
+            <h5 style={{ color: '#FFD700', fontSize: '18px', fontWeight: '600' }}>Developed By:</h5>
+            <ul style={{ listStyleType: 'none', padding: '0', margin: '0' }}>
+              <li style={{ marginBottom: '5px' }}>
+                <a href="https://www.linkedin.com/in/soham-anwane-0a46842aa/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'grey', fontSize: '16px', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.target.style.color = '#FFD700'}
+                  onMouseLeave={(e) => e.target.style.color = 'grey'}>
+                  Soham Anwane
+                </a>
+              </li>
+              <li style={{ marginBottom: '5px' }}>
+                <a href="https://in.linkedin.com/in/tusharsingh-baghel" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'grey', fontSize: '16px', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.target.style.color = '#FFD700'}
+                  onMouseLeave={(e) => e.target.style.color = 'grey'}>
+                  Tusharsingh Baghel
+                </a>
+              </li>
+              <li style={{ marginBottom: '5px' }}>
+                <a href="https://www.linkedin.com/in/ansh-dalal-69836a6a/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'grey', fontSize: '16px', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.target.style.color = '#FFD700'}
+                  onMouseLeave={(e) => e.target.style.color = 'grey'}>
+                  Ansh Dalal
+                </a>
+              </li>
+              <li style={{ marginBottom: '5px' }}>
+                <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'grey', fontSize: '16px', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.target.style.color = '#FFD700'}
+                  onMouseLeave={(e) => e.target.style.color = 'grey'}>
+                  Vinit More
+                </a>
+              </li>
+            </ul>
+          </div>
+
         </div>
+        
       </div>
 
-      {/* Dev Credits Section */}
-      <div className="dev-credits text-center py-3" style={{ fontSize: '14px', color: '#FFD700', marginTop: '20px' }}>
-        <h5 style={{ color: '#FFD700', fontSize: '18px', fontWeight: '600' }}>Developed By:</h5>
-        <ul style={{ listStyleType: 'none', padding: '0', margin: '0' }}>
-          <li style={{ marginBottom: '5px' }}>
-            <a href="https://github.com/developer1" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 1</a>
-          </li>
-          <li style={{ marginBottom: '5px' }}>
-            <a href="https://github.com/developer2" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 2</a>
-          </li>
-          <li style={{ marginBottom: '5px' }}>
-            <a href="https://github.com/developer3" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 3</a>
-          </li>
-          <li style={{ marginBottom: '5px' }}>
-            <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 4</a>
-          </li>
-        </ul>
-      </div>
+      
 
       <div className="container text-center mt-4">
         <p>
