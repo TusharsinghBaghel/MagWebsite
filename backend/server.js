@@ -20,7 +20,7 @@ const config = {
   user: process.env.USER,
   password: process.env.PASSWORD,
   host: process.env.HOST,
-  port: parseInt(process.env.PORT, 10),
+  port: 19299,
   database: process.env.DATABASE,
   ssl: process.env.CERTIFICATE 
     ? {
