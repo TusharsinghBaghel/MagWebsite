@@ -42,19 +42,19 @@ function Footer() {
       </div>
 
       {/* Dev Credits Section */}
-      <div className="dev-credits" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '14px', color: '#FFD700' }}>
-        <h5 style={{ color: '#FFD700', fontSize: '18px', fontWeight: 'bold' }}>Developed By:</h5>
-        <ul style={{ listStyleType: 'none', padding: '0' }}>
-          <li style={{ marginBottom: '10px' }}>
+      <div className="dev-credits text-center py-3" style={{ fontSize: '14px', color: '#FFD700', marginTop: '20px' }}>
+        <h5 style={{ color: '#FFD700', fontSize: '18px', fontWeight: '600' }}>Developed By:</h5>
+        <ul style={{ listStyleType: 'none', padding: '0', margin: '0' }}>
+          <li style={{ marginBottom: '5px' }}>
             <a href="https://github.com/developer1" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 1</a>
           </li>
-          <li style={{ marginBottom: '10px' }}>
+          <li style={{ marginBottom: '5px' }}>
             <a href="https://github.com/developer2" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 2</a>
           </li>
-          <li style={{ marginBottom: '10px' }}>
+          <li style={{ marginBottom: '5px' }}>
             <a href="https://github.com/developer3" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 3</a>
           </li>
-          <li style={{ marginBottom: '10px' }}>
+          <li style={{ marginBottom: '5px' }}>
             <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#FFD700', fontSize: '16px' }}>Developer 4</a>
           </li>
         </ul>
