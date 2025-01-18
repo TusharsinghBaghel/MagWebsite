@@ -15,7 +15,7 @@ import Team from "./components/Team.jsx";
 import Prose from "./components/Prose.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
-
+import { Analytics } from "@vercel/analytics/react";
 function MainLayout() {
   const location = useLocation();
   const showNavbar = location.pathname === "/";
@@ -39,6 +39,8 @@ function MainLayout() {
                 <Gallery />
                 <Team />
                 <Contact />
+                <Analytics/>
+
               </>
             }
           />
