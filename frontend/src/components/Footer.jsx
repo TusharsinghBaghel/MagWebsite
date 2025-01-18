@@ -64,7 +64,7 @@ function Footer() {
                 </a>
               </li>
               <li style={{ marginBottom: '5px' }}>
-                <a href="https://github.com/developer4" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'grey', fontSize: '16px', transition: 'color 0.3s' }}
+                <a href="https://www.linkedin.com/in/vinit-more-981a5527b/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'grey', fontSize: '16px', transition: 'color 0.3s' }}
                   onMouseEnter={(e) => e.target.style.color = '#FFD700'}
                   onMouseLeave={(e) => e.target.style.color = 'grey'}>
                   Vinit More
@@ -81,7 +81,7 @@ function Footer() {
 
       <div className="container text-center mt-4">
         <p>
-          © <span>Copyright</span> <strong className="px-1 sitename" style={{ color: '#FFD700' }}>MAG.com</strong> <span>All Rights Reserved</span>
+          © <span></span> <strong className="px-1 sitename" style={{ color: '#FFD700' }}>MAG.com</strong> <span>-Literature Club @VNIT</span>
         </p>
       </div>
     </footer>
