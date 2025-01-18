@@ -9,19 +9,41 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import "../css/magazine.css";
 import { BASE_URL } from "../store.js";
+const CACHE_EXPIRATION_TIME = 10* 24* 60 * 60 * 1000;
 
 const Magazine = () => {
   const [magazines, setMagazines] = useState([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     AOS.init();
 
     const fetchMagazines = async () => {
       try {
+        const cachedData = localStorage.getItem("magazines");
+        const cacheTimestamp = localStorage.getItem("magazinesTimestamp");
+        
+        
+        // Check if cached data exists and is still valid
+        if (cachedData && cacheTimestamp) {
+          const currentTime = Date.now();
+          if (currentTime - cacheTimestamp < CACHE_EXPIRATION_TIME) {
+            console.log("Cache hit: Using cached magazine data.");
+            setMagazines(JSON.parse(cachedData));
+            setLoading(false);
+            return;
+          }
+        }
+
+        // Fetch fresh data from the server
         const response = await axios.get(`${BASE_URL}/magazine/get`);
         setMagazines(response.data);
-        setLoading(false);  // Set loading to false once data is fetched
+
+        // Save data and timestamp to localStorage
+        localStorage.setItem("magazines", JSON.stringify(response.data));
+        localStorage.setItem("magazinesTimestamp", Date.now().toString());
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching magazine data:", error);
         setLoading(false);
@@ -40,12 +62,7 @@ const Magazine = () => {
 
       {loading ? (
         <div className="loader-container">
-          {/* Add the loader */}
-          <l-grid
-            size="90"
-            speed="1"
-            color="white"
-          ></l-grid>
+          <l-grid size="90" speed="1" color="white"></l-grid>
         </div>
       ) : (
         <div className="container">
