@@ -185,6 +185,9 @@
   .blog-modal-text {
     font-size: 0.95rem;
   }
+  .nav-pills .nav-link.active {
+    color: black !important; 
+  }
 }
 
 @media (max-width: 480px) {
