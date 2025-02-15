@@ -95,7 +95,7 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-            <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
+{/*             <i className="mobile-nav-toggle d-xl-none bi bi-list"></i> */}
           </nav>
 
           <a
