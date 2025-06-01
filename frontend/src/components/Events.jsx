@@ -12,7 +12,7 @@ import { BASE_URL } from "../store.js";
 const DB_NAME = "AppCacheDB";
 const DB_VERSION = 1;
 const EVENTS_STORE = "events";
-const CACHE_EXPIRATION_TIME = 10 * 24 * 60 * 60 * 1000; // 10 days
+const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 1 days
 const SIZE_WARNING_THRESHOLD = 35 * 1024 * 1024; // 35 MB in bytes
 
 const Events = () => {
