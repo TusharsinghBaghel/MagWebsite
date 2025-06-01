@@ -84,7 +84,7 @@ const Magazine = () => {
             }}
           >
             {magazines.map((magazine) => (
-              <SwiperSlide key={magazine.id}>
+              <SwiperSlide key={magazine.edition}>
                 <a href={magazine.link} target="_blank" rel="noopener noreferrer">
                   <img
                     src={`data:image/jpeg;base64,${magazine.image}`}
