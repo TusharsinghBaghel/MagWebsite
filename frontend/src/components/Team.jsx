@@ -5,6 +5,17 @@ import 'aos/dist/aos.css';
 
 const teamMembers = [
   {
+    name: 'MAG 2025',
+    role: '',
+    imgSrc: 'assets/img/team/2025.jpg',
+    socialLinks: {
+      twitter: '',
+      facebook: '',
+      instagram: '',
+      linkedin: ''
+    }
+  },
+  {
     name: 'MAG 2024',
     role: '',
     imgSrc: 'assets/img/team/2024.jpg',
@@ -19,17 +30,6 @@ const teamMembers = [
     name: 'MAG 2023',
     role: '',
     imgSrc: 'assets/img/team/2023.jpg',
-    socialLinks: {
-      twitter: '',
-      facebook: '',
-      instagram: '',
-      linkedin: ''
-    }
-  },
-  {
-    name: 'MAG 2022',
-    role: '',
-    imgSrc: 'assets/img/team/2024.jpg',
     socialLinks: {
       twitter: '',
       facebook: '',
