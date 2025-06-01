@@ -9,12 +9,12 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import "../css/magazine.css";
 import { BASE_URL } from "../store.js";
-const CACHE_EXPIRATION_TIME = 10* 24* 60 * 60 * 1000;
+
+const CACHE_EXPIRATION_TIME = 10 * 24 * 60 * 60 * 1000; // 10 days
 
 const Magazine = () => {
   const [magazines, setMagazines] = useState([]);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     AOS.init();
@@ -23,26 +23,25 @@ const Magazine = () => {
       try {
         const cachedData = localStorage.getItem("magazines");
         const cacheTimestamp = localStorage.getItem("magazinesTimestamp");
-        
-        
-        // Check if cached data exists and is still valid
-        if (cachedData && cacheTimestamp) {
-          const currentTime = Date.now();
-          if (currentTime - cacheTimestamp < CACHE_EXPIRATION_TIME) {
-            console.log("Cache hit: Using cached magazine data.");
-            setMagazines(JSON.parse(cachedData));
-            setLoading(false);
-            return;
-          }
+        const currentTime = Date.now();
+
+        if (cachedData && cacheTimestamp && currentTime - cacheTimestamp < CACHE_EXPIRATION_TIME) {
+          console.log("Cache hit: Using cached magazine data.");
+          const sortedCached = JSON.parse(cachedData).sort((a, b) => b.edition - a.edition);
+          setMagazines(sortedCached);
+          setLoading(false);
+          return;
         }
 
-        // Fetch fresh data from the server
+        // Fetch fresh data
         const response = await axios.get(`${BASE_URL}/magazine/get`);
-        setMagazines(response.data);
+        const sortedMagazines = response.data.sort((a, b) => b.edition - a.edition);
+        setMagazines(sortedMagazines);
 
-        // Save data and timestamp to localStorage
-        localStorage.setItem("magazines", JSON.stringify(response.data));
-        localStorage.setItem("magazinesTimestamp", Date.now().toString());
+        // Save sorted data to localStorage
+        localStorage.setItem("magazines", JSON.stringify(sortedMagazines));
+        localStorage.setItem("magazinesTimestamp", currentTime.toString());
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching magazine data:", error);
@@ -89,7 +88,7 @@ const Magazine = () => {
                   <img
                     src={`data:image/jpeg;base64,${magazine.image}`}
                     className="magazine-img"
-                    alt="Magazine Cover"
+                    alt={`Magazine Edition ${magazine.edition}`}
                   />
                 </a>
               </SwiperSlide>
