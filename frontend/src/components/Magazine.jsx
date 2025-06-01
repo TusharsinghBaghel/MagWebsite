@@ -68,8 +68,8 @@ const Magazine = () => {
           <Swiper
             modules={[Pagination, Autoplay]}
             loop={true}
-            speed={1000}
-            autoplay={{ delay: 1000, disableOnInteraction: false }}
+            speed={1500}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
             slidesPerView={3}
             spaceBetween={20}
             pagination={{ clickable: true }}
